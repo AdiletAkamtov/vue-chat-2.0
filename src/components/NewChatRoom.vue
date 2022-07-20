@@ -10,13 +10,18 @@
 <script>
 import { ref } from "vue";
 import { getUser } from "../composables/getUser"
+import { Timestamp } from '@firebase/firestore';
 export default {
   setup(){
     const message = ref("");
     const { user } = getUser();
 
     const handleSubmit = () => {
-      console.log(message.value);
+      const newMessage = {
+        name: user.value.displayName,
+        message: message.value,
+        createAt: Timestamp.fromDate(new Date()),
+      }
     }
 
     return { message,handleSubmit };
