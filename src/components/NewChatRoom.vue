@@ -8,20 +8,26 @@
 </template>
 
 <script>
+import { Timestamp } from '@firebase/firestore';
 import { ref } from "vue";
 import { getUser } from "../composables/getUser"
-import { Timestamp } from '@firebase/firestore';
+import { useCollection } from "../composables/useCollection"
+
 export default {
   setup(){
     const message = ref("");
     const { user } = getUser();
+    const { addDocument } = useCollection("messages")
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
       const newMessage = {
         name: user.value.displayName,
         message: message.value,
         createAt: Timestamp.fromDate(new Date()),
-      }
+      };
+      await addDocument(newMessage)
+
+      message.value = "";
     }
 
     return { message,handleSubmit };

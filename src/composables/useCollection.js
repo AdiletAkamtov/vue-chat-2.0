@@ -1,4 +1,4 @@
-import {addDoc, collection} from "firebase/firestore"
+import {addDoc, collection, onSnapshot } from "firebase/firestore"
 import { ref } from "vue"
 import { firestore } from "../firebase/config"
 
