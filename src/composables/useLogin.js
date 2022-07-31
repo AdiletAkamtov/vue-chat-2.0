@@ -1,20 +1,13 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/config";
-
-
-export const useLogin = async (email, password) => {
-
-  try{
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase/config';
+export const uselogin = async (email, password) => {
+  try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
-
-    if(!user){
-      throw new Error("Не возможно проверсти регистрацию")
+    if (!user) {
+      throw new Error('Невозможно провести авторизироваться');
     }
-
-    return user
+    return user;
+  } catch (err) {
+    return new Error(err.message);
   }
-  
-  catch (err) {
-    throw new Error(err.message)
-  }
-}
+};

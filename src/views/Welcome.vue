@@ -1,91 +1,72 @@
 <template>
-  <div class="welcome continer">
-    <h2>Welcome User</h2>
-
+  <div class="welcome container">
+    <p>Welcome</p>
     <div v-if="showForm">
-
-      <SignUpFrom @signup="handleEnterChat"/>
+      <h2>Sign Up</h2>
+      <SignUpForm @signup="handleEnterChat" />
       <p>
-        No account yet?
-        <span  @click="showForm = false">Login</span> instead.
+        No acciunt yet?
+        <span @click="showForm = false">Login</span> instarted
       </p>
     </div>
-
     <div v-else>
+      <h2>Login</h2>
       <Login @login="handleEnterChat" />
       <p>
-        No account yet?
-        <span @click="showForm = true">Sign Up</span> instead.
+        Alredy registered?
+        <span @click="showForm = true">Sign Up</span> instarted
       </p>
     </div>
   </div>
 </template>
 
 <script>
-import SignUpFrom from "../components/SignUpForm.vue";
-import Login from "../components/Login.vue";
-import { ref } from "@vue/reactivity"
-import { useRouter } from "vue-router"
+import SignUpForm from '../components/SingUpForm.vue';
+import Login from '../components/Login.vue';
+import { ref } from '@vue/reactivity';
+import { useRouter } from 'vue-router';
 export default {
-  components: { SignUpFrom , Login } ,
-
-  setup(){
+  components: { SignUpForm, Login },
+  setup() {
     const showForm = ref(false);
     const router = useRouter();
-
+    
     const handleEnterChat = () => {
-      router.push("/chatroom")
-    }
-    return {showForm, handleEnterChat}
-  }
-}
+      router.push('/chatroom');
+    };
+    return { showForm, handleEnterChat };
+  },
+};
 </script>
 
 <style>
-.continer{
-  width: 90%; 
-  max-width: 960px; 
-  margin: 80px auto;
-  padding: 50px 0;
-  border-radius: 20px; 
-  box-shadow: 2px 4px 6px rgba(28, 6, 49, 0.1); 
-  background: white; 
+.welcome {
+  text-align: center;
+  padding: 20px 0;
 }
-.welcome h2{
-  font-size: 48px;
-  display: flex;
-  justify-content: center;
+.welcome form {
+  width: 300px;
+  margin: 20px auto;
 }
-.welcome p{
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
+.welcome label {
+  display: block;
+  margin: 20px 0 10px;
 }
-.welcome form { 
-  width: 300px; 
-  margin: 20px auto; 
-} 
-.welcome label { 
-  display: block; 
-  margin: 20px 0 10px; 
-} 
-.welcome input { 
-  width: 100%; 
-  padding: 10px; 
-  border-radius: 20px; 
-  border: 1px solid #eee; 
-  outline: none; 
-  color: #999; 
-  margin: 10px auto; 
-} 
-.welcome span { 
-  font-weight: bold; 
-  text-decoration: underline; 
+.welcome input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  outline: none;
+  color: #999;
+  margin: 10px auto;
+}
+.welcome span {
+  font-weight: bold;
+  text-decoration: underline;
   cursor: pointer;
-  margin: 0 5px;
-} 
-.welcome button { 
-  margin: 20px auto; 
 }
-
+.welcome button {
+  margin: 20px auto;
+}
 </style>

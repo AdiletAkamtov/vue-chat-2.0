@@ -1,15 +1,12 @@
+<script setup>
+</script>
+
 <template>
-  
+
   <RouterView />
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
 <style>
-  @import '@/assets/base.css';
+@import '@/assets/base.css';
 
 </style>
