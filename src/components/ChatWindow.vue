@@ -50,14 +50,6 @@ export default {
   background: #363636;
   padding: 30px 20px;
 }
-.single {
-  margin: 10px 0;
-  max-width: 50%;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 12px;
-  width: max-content;
-}
 .created-at {
   display: block;
   color: rgb(222, 222, 222);
@@ -72,6 +64,14 @@ export default {
   max-height: 400px;
   overflow: auto;
   color:#fff;
+}
+.single {
+  margin: 10px 0;
+  max-width: 50%;
+  background-color:  #b844d6;
+  padding: 10px;
+  border-radius: 12px;
+  width: max-content;
 }
 .me {
   background: #6c297d;
